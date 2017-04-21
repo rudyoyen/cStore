@@ -13,13 +13,12 @@ class Store
 	def buy(cash, item_type)
 		order = initiate_purchase(cash, item_type)
 		if promo_exists?
-			@promo.apply(order)
+			order = @promo.apply(order)
 		end
 		order
 	end
 
 	def initiate_purchase(cash, item_type)
-		puts "spending #{cash}, for #{item_type}"
 		quantity = cash / @price
 		order = Constants::build_order
 		order[item_type][:count] = quantity

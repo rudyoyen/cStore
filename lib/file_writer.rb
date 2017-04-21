@@ -1,3 +1,4 @@
+require 'pry'
 class FileWriter
 
 	def initialize(file_name)
@@ -5,14 +6,11 @@ class FileWriter
 	end
 
 	def prepare_file
-		CSV.open(@file_name, "wb") do |csv|
-			puts "Preparing FILE"
-		end
+		File.new(@file_name, "wb")
 	end
 
 	def write(row_contents)
 		CSV.open(@file_name, "ab") do |csv|
-			puts 'writing file'
 			csv << row_contents
 		end
 	end

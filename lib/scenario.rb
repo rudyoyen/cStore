@@ -7,7 +7,7 @@ class Scenario
 	def initialize(inputs)
 		@price = inputs['price']
 		@cash = inputs['cash']
-		@wrappers_needed = inputs['wrappers_needed']
+		@wrappers_needed = inputs['wrappers needed']
 		@type = inputs['type']
 	end
 
