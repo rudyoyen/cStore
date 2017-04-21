@@ -16,6 +16,9 @@ class Scenario
 		store = Store.new(@price, promo)
 
 		order = store.buy(@cash, @type)
+
+		# regardless of design, return order
+		order
 	end
 
 
