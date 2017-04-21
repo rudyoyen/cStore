@@ -5,7 +5,7 @@ class Promo
 	end
 
 	def apply(order)
-		puts order
+		order
 	end
 
 end
