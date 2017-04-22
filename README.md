@@ -1,20 +1,20 @@
 ### Requirements
 
-This is Ruby application. If you do not already have Ruby, you can dowload the latest here: https://www.ruby-lang.org/en/downloads/
+This is a Ruby application. If you do not already have Ruby, you can dowload the latest here: https://www.ruby-lang.org/en/downloads/
 This will also allow you to install gems.
+
 
 ### Set Up
 
-Once you have Ruby installed, you will need install any dependencies. In this case it is only a RSpec. If you don't have the Bundler gem already installed, first run the following command from the root directory
+Once you have Ruby installed, you will need install the gems for the project. In this case it is only RSpec. If you don't have the Bundler gem already installed, from the root directory first run the command:
 
-`gem bundle install`
+`gem install bundler`
 
-If you already have Bundler installed, simply run the following command from the root directory
+If you already have Bundler installed, simply run:
 
 `bundle install`
 
-This will install our gems for us. 
-
+ 
 
 ### Run
 
@@ -42,7 +42,7 @@ There are three main sections of the application, the input, the output, and sce
 The third secion is the scenario that has the following structure:
 
 	scenario <-- responsible for running each scenario 
-		store <-- responsible for receiving processing order from customer input and promo settings
+		store <-- responsible for processing orders from customer input and promo settings
 			order <-- responsible for creating an order based on the store's input
 			promo <-- responsible for handling promo rules based on the store's input
 
@@ -53,15 +53,15 @@ These three sections of the application are all managed from the app class.
 
 **Shopper Class**
 
-Although shoppers are mentioned in the project specs, I decided to not create a shopper class. The only thing that was related to the shopper was the cash in each scenario, but that could easily be interpreted as the cash received by the store. If we wanted to add a shopper class, it would have been easy enough and a shopper could call the place_order method on the store class. 
+Although shoppers are mentioned in the project specs, I decided to not create a Shopper class. The only thing that was related to the shopper was the cash provided in each scenario. However, that could easily be interpreted as the cash received by the store. If we want to add a Shopper class in the future, a shopper could call the place_order method on the Store class. 
 
 
 **Order and Promo Classes**
 
-These two classes are more tightly-coupled than I would like. I used dependency injection to pass promo into order. An order knows about three of Promo's methods. I wasn't sure if there was a way to decouple these further. The code for applying the promos has to be store somewhere. I saw this division as reasonable solution:
+These two classes are more tightly-coupled than I would like. I used dependency injection to pass a promo instance into Order. An order knows about three of Promo's methods. I wasn't sure if there was a way to decouple these further. The code for applying promos to an order has live somewhere so I saw this division as a reasonable solution:
 
 *	Order class - Responsbible for knowing how many chocolates and wrappers it has, incrementing/decrementing chocoloate count and wrapper count.
-*	Promo class - No knowledge of order's structure. Responsible for knowing about the promo rules. Promo tells order: whether wrappers can be redeemed (dependency #1), telling order how many wrappers to remove (dependency #2), and telling order how many chocolates to add after redemption (dependency #3).
+*	Promo class - No knowledge of order's structure. Responsible for knowing about the promo rules. Promo tells Order: whether wrappers can be redeemed (dependency #1), telling order how many wrappers to remove (dependency #2), and telling order how many chocolates to add after redemption (dependency #3).
 
 
 **Tests**
