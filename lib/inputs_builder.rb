@@ -16,35 +16,37 @@ class InputsBuilder
 		@formatted_rows
 	end
 
-	def format_row(row)
-		formatted_row = Hash.new
+	private
 	
-		# expecting incoming row to look like: {"cash"=>"12", " price"=>" 2", " wrappers needed"=>" 5", " type"=>" 'milk'"}
-		row.each do |label, value|		
-			f_label = format_label(label)
-			f_value = format_value(value)
+		def format_row(row)
+			formatted_row = Hash.new
+		
+			# expecting incoming row to look like: {"cash"=>"12", " price"=>" 2", " wrappers needed"=>" 5", " type"=>" 'milk'"}
+			row.each do |label, value|		
+				f_label = format_label(label)
+				f_value = format_value(value)
 
-			formatted_row[f_label] = f_value
-		end
-	
-		formatted_row
-	end
-
-	def format_value(input)
-		input = input.strip
-
-		if input.is_integer? 
-			value = input.to_i 
-		elsif input.is_a? String
-			value = input.chomp("'").reverse.chomp("'").reverse
+				formatted_row[f_label] = f_value
+			end
+		
+			formatted_row
 		end
 
-		value
-	end
+		def format_value(input)
+			input = input.strip
 
-	def format_label(input)
-		input.strip
-	end
+			if input.is_integer? 
+				value = input.to_i 
+			elsif input.is_a? String
+				value = input.chomp("'").reverse.chomp("'").reverse
+			end
+
+			value
+		end
+
+		def format_label(input)
+			input.strip
+		end
 
 end
 

@@ -1,4 +1,6 @@
 require 'pry'
+require 'csv'
+
 class FileWriter
 
 	def initialize(file_name)

@@ -1,26 +1,26 @@
-require './constants.rb'
+require './config.rb'
 require './file_reader.rb'
 require './file_writer.rb'
 require './inputs_builder.rb'
 require './outputs_builder.rb'
 require './scenario.rb'
-require 'csv'
+
 
 #*** simplify into one module
-file_contents = FileReader.new(Constants::INPUT_FILE).read_rows
+file_contents = FileReader.new(Config::INPUT_FILE_NAME).read_rows
 inputs = InputsBuilder.new(file_contents).format_rows	# make this a factory??
 
 
-file_writer = FileWriter.new(Constants::OUTPUT_FILE)
+file_writer = FileWriter.new(Config::OUTPUT_FILE_NAME)
 file_writer.prepare_file
 
+scenario = Scenario.new
+
 inputs.each do |input|
-	scenario = Scenario.new(input)
-	output = scenario.run
+	output = scenario.run(input)
 
 	#*** Simplify into one module
 	formatted_output = OutputsBuilder.new(output).format
-
 	file_writer.write(formatted_output)
 end
 

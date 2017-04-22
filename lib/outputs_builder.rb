@@ -1,4 +1,5 @@
 require 'pry'
+require './config.rb'
 
 class OutputsBuilder
 
@@ -26,8 +27,13 @@ class OutputsBuilder
 		output_array
 	end
 
-	def build_item(type, counters)
-		" #{type} #{counters[:count]}"
-	end
+	private
+		def count
+			Config::ITEM_COUNT_SYMBOL
+		end
+
+		def build_item(type, counters)
+			" #{type} #{counters[count]}"
+		end
 
 end

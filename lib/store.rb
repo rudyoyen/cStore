@@ -1,35 +1,25 @@
 require './order.rb'
-require './constants.rb'
 require 'pry'
 
 class Store
 
-	def initialize(price, promo)
+	def initialize()
+		@price = nil
+		@promo = nil
+	end
+
+	def set_up(price, promo)
 		@price = price
 		@promo = promo
-		@order = nil
 	end
 
-	def buy(cash, item_type)
-		order = initiate_purchase(cash, item_type)
-		if promo_exists?
-			order = @promo.apply(order)
-		end
-		order
+	def place_order(cash, item_type)
+		quantity = calculate_quantity(cash)		
+		Order.new(item_type, quantity, @promo).create
 	end
 
-	def initiate_purchase(cash, item_type)
-		quantity = cash / @price
-		order = Constants::build_order
-		order[item_type][:count] = quantity
-		order[item_type][:wrappers] = quantity
-		# binding.pry
-		order
+	def calculate_quantity(cash)
+		cash / @price
 	end
-
-	def promo_exists?
-		@promo != nil
-	end
-
 
 end

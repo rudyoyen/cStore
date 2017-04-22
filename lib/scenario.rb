@@ -1,25 +1,24 @@
 require './promo.rb'
 require './store.rb'
-require './shopper.rb'
+# require './shopper.rb'
 
 class Scenario
 
-	def initialize(inputs)
-		@price = inputs['price']
-		@cash = inputs['cash']
-		@wrappers_needed = inputs['wrappers needed']
-		@type = inputs['type']
+	def initialize
+		@store = Store.new
 	end
 
-	def run
-		promo = Promo.new(@wrappers_needed)
-		store = Store.new(@price, promo)
+	def run(inputs)
+		price = inputs['price']
+		cash = inputs['cash']
+		wrappers_needed = inputs['wrappers needed']
+		type = inputs['type']
 
-		order = store.buy(@cash, @type)
+		@store.set_up(price, Promo.new(wrappers_needed))
 
-		# regardless of design, return order
+		order = @store.place_order(cash, type)
+
 		order
 	end
-
 
 end
