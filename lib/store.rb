@@ -1,5 +1,4 @@
 require_relative 'order'
-require 'pry'
 
 class Store
 
@@ -12,8 +11,7 @@ class Store
 	end
 
 	def place_order(cash, item_type)
-		if @price == nil
-			puts "Cannot place order with out price defined."
+		if !is_price_valid?
 			return Hash.new
 		end
 
@@ -33,6 +31,18 @@ class Store
 
 		def set_promo(new_promo)
 			@promo = new_promo
+		end
+
+		def is_price_an_integer?
+			@price.is_a? Integer
+		end
+
+		def is_price_greater_than_zero?
+			@price > 0
+		end
+
+		def is_price_valid?
+			is_price_an_integer? && is_price_greater_than_zero?
 		end
 
 end

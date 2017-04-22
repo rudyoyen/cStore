@@ -22,6 +22,16 @@ describe 'Promo' do
 	  	wrappers = nil         
 	    expect(@promo.can_be_redeemed?(wrappers)).to eq(false)
 	  end
+	  it 'returns false if wrappers_needed is 0 or less' do 
+	  	promo = Promo.new(0)
+	  	wrappers = 4      
+	    expect(promo.can_be_redeemed?(wrappers)).to eq(false)
+	  end
+	  it 'returns false if wrappers_needed is not a number' do 
+	  	promo = Promo.new(nil)
+	  	wrappers = 4      
+	    expect(promo.can_be_redeemed?(wrappers)).to eq(false)
+	  end
 	end
 
 	describe '#receive_wrappers' do

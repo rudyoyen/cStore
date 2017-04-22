@@ -1,4 +1,4 @@
-require_relative 'inputs_formatter'
+require_relative 'input_formatter'
 require_relative 'file_reader'
 
 class InputBuilder
@@ -8,12 +8,8 @@ class InputBuilder
 	end
 
 	def create_inputs
-		file_contents = FileReader.new(@file_name).read_rows
-		inputs = InputsFormatter.new(file_contents).format_rows	
-	end
-
-	def cool
-		true
+		unformatted_rows = FileReader.new(@file_name).read_rows
+		inputs = InputFormatter.new(unformatted_rows).format_rows	
 	end
 
 end

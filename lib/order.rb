@@ -56,8 +56,7 @@ class Order
 
 		def apply_promo
 			while promo_can_be_redeemed?
-				type = find_wrappers_to_redeem
-				redeem(type)
+				redeem(find_wrappers_to_redeem)
 			end
 		end
 
@@ -84,7 +83,7 @@ class Order
 		end
 
 		def receive_items(type)
-			items = promo_receive_items(type)
+			items = promo_get_items(type)
 			add_new_items_to_order(items)
 		end
 
@@ -95,10 +94,11 @@ class Order
 			end
 		end
 
-
 		def promo_exists?
 			@promo != nil
 		end
+
+		# Dependcies on promo class
 
 		def are_enough_wrappers?(wrappers)
 			@promo.can_be_redeemed?(wrappers)
@@ -108,7 +108,7 @@ class Order
 			@promo.receive_wrappers(wrappers)
 		end
 
-		def promo_receive_items(type)
+		def promo_get_items(type)
 			@promo.provide_items(type)
 		end	
 

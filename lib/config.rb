@@ -1,6 +1,6 @@
 module Config
-	INPUT_FILE_NAME = '../../input/orders.csv'
-	OUTPUT_FILE_NAME = '../../output/redemptions.csv'
+	INPUT_FILE_NAME = './input/orders.csv'
+	OUTPUT_FILE_NAME = './output/redemptions.csv'
 	PROMO_RULES = {
 		'milk' => {'milk' => 1, 'sugar free' => 1},
 		'white' => {'white' => 1, 'sugar free' => 1},

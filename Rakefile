@@ -1,13 +1,12 @@
-begin
-  require 'rspec/core/rake_task'
+require 'rspec/core/rake_task'
 
-  task :default => :test
+task :default => :run
 
-  RSpec::Core::RakeTask.new(:test) do |task|
-    task.rspec_opts = ['--color', '--format', 'doc']
-    task.verbose = false
-  end
+task :run do
+    ruby "./lib/main.rb"
+end
 
-rescue LoadError
-  # no rspec available
+RSpec::Core::RakeTask.new(:test) do |task|
+  task.rspec_opts = ['--color', '--format', 'doc']
+  task.verbose = false
 end

@@ -1,11 +1,6 @@
-
-require 'pry'
-
-
-require_relative 'config'
-require 'input_helpers/input_builder.rb'
-require 'output_helpers/output_builder.rb'
-require 'scenario'
+require_relative 'input_helpers/input_builder.rb'
+require_relative 'output_helpers/output_builder.rb'
+require_relative 'scenario'
 
 class App
 
@@ -22,7 +17,6 @@ class App
 		inputs = InputBuilder.new(@input_file_name).create_inputs
 
 		inputs.each do |input|
-			# binding.pry
 			output = scenario.run(input)
 			output_builder.send(output)
 		end
@@ -30,8 +24,6 @@ class App
 
 end
 
-app = App.new(Config::INPUT_FILE_NAME, Config::OUTPUT_FILE_NAME)
 
-app.start
 
 

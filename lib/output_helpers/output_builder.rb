@@ -1,7 +1,6 @@
 require_relative 'file_writer'
 require_relative 'output_formatter'
 
-
 class OutputBuilder
 
 	def initialize(file_name)

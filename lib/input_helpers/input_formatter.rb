@@ -1,11 +1,9 @@
-require 'pry'
-require 'pry-nav'
 require_relative '../utilities/string.rb'
 
-class InputsFormatter
+class InputFormatter
 
 	def initialize(rows)
-		@rows = rows
+		@rows = rows || []
 		@formatted_rows = []
 	end
 

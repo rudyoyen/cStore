@@ -1,4 +1,3 @@
-require 'pry'
 require 'csv'
 
 class FileReader
@@ -15,14 +14,16 @@ class FileReader
 		@rows
 	end
 
-	def add_row(row)
-		if has_contents?(row)
-			@rows << row.to_hash		
-		end
-	end
+	private 
 
-	def has_contents?(array)
-		array.length > 0
-	end
+		def add_row(row)
+			if has_contents?(row)
+				@rows << row.to_hash		
+			end
+		end
+
+		def has_contents?(array)
+			array.length > 0
+		end
 
 end
