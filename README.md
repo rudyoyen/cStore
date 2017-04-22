@@ -5,7 +5,7 @@ This will also allow you to install gems.
 
 ### Set Up
 
-Once you have Ruby installed, you will need install any dependencies. In this case it is only a RSPEC. If you don't have the Bundler gem already installed, first run the following command from the root directory
+Once you have Ruby installed, you will need install any dependencies. In this case it is only a RSpec. If you don't have the Bundler gem already installed, first run the following command from the root directory
 
 `gem bundle install`
 
@@ -51,16 +51,19 @@ These three sections of the application are all managed from the app class.
 
 ### Notes
 
-*Shopper Class*
+**Shopper Class**
+
 Although shoppers are mentioned in the project specs, I decided to not create a shopper class. The only thing that was related to the shopper was the cash in each scenario, but that could easily be interpreted as the cash received by the store. If we wanted to add a shopper class, it would have been easy enough and a shopper could call the place_order method on the store class. 
 
-*Order and Promo Classes*
+**Order and Promo Classes**
+
 These two classes are more tightly-coupled than I would like. I used dependency injection to pass promo into order. An order knows about three of Promo's methods. I wasn't sure if there was a way to decouple these further. The code for applying the promos has to be store somewhere. I saw this division as reasonable solution:
 	Order class - Responsbible for knowing how many chocolates and wrappers it has, incrementing/decrementing chocoloate count and wrapper count
 	Promo class - No knowledge of order's structure. Responsible for knowing about the promo rules. Promo tells order: whether wrappers can be redeemed (dependency #1), telling order how many wrappers to remove (dependency #2), and telling order how many chocolates to add after redemption (dependency #3).
 
-*Tests*
-Due to the dependency injection mentioned above, I wanted to come up with a better mock of promo without actually using the promo class in the tests. 
+**Tests**
+
+Due to the dependency injection mentioned above, there is probably a better way of testing orders than creating a new instance of Promo each time a new order is created. A mock would be best but I was having trouble implenting in RSpec.
 
 
 
