@@ -46,8 +46,7 @@ The third secion is the scenario that has the following structure:
 			order <-- responsible for creating an order based on the store's input
 			promo <-- responsible for handling promo rules based on the store's input
 
-These three sections of the application are all managed from the app class. 
-
+These three sections of the application are all managed from the App class. The App class and all classes above are stored in the lib directory.
 
 ### Notes
 
