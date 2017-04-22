@@ -60,8 +60,8 @@ Although shoppers are mentioned in the project specs, I decided to not create a 
 
 These two classes are more tightly-coupled than I would like. I used dependency injection to pass promo into order. An order knows about three of Promo's methods. I wasn't sure if there was a way to decouple these further. The code for applying the promos has to be store somewhere. I saw this division as reasonable solution:
 
-	*	Order class - Responsbible for knowing how many chocolates and wrappers it has, incrementing/decrementing chocoloate count and wrapper count.
-	*	Promo class - No knowledge of order's structure. Responsible for knowing about the promo rules. Promo tells order: whether wrappers can be redeemed (dependency #1), telling order how many wrappers to remove (dependency #2), and telling order how many chocolates to add after redemption (dependency #3).
+*	Order class - Responsbible for knowing how many chocolates and wrappers it has, incrementing/decrementing chocoloate count and wrapper count.
+*	Promo class - No knowledge of order's structure. Responsible for knowing about the promo rules. Promo tells order: whether wrappers can be redeemed (dependency #1), telling order how many wrappers to remove (dependency #2), and telling order how many chocolates to add after redemption (dependency #3).
 
 
 **Tests**
