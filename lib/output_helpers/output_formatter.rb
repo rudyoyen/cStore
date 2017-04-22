@@ -1,7 +1,7 @@
 require 'pry'
-require './config.rb'
+require './config/config.rb'
 
-class OutputsBuilder
+class OutputFormatter
 
 	def initialize(output)
 		@raw_output = output

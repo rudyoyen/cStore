@@ -1,5 +1,5 @@
 require 'pry'
-require './config.rb'
+require_relative './config/config.rb'
 
 class Promo
 

@@ -1,5 +1,4 @@
-require './constants.rb'
-require './config.rb'
+require_relative './config/config.rb'
 
 class Order
 
@@ -22,7 +21,7 @@ class Order
 	end
 
 	private 
-	
+
 		def count
 			Config::ITEM_COUNT_SYMBOL
 		end

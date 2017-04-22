@@ -1,6 +1,5 @@
-require './promo.rb'
-require './store.rb'
-# require './shopper.rb'
+require_relative 'promo'
+require_relative 'store'
 
 class Scenario
 

@@ -9,6 +9,7 @@ class FileWriter
 
 	def prepare_file
 		File.new(@file_name, "wb")
+		return self
 	end
 
 	def write(row_contents)

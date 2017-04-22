@@ -1,8 +1,8 @@
 require 'pry'
 require 'pry-nav'
-require './string.rb'
+require_relative '../utilities/string.rb'
 
-class InputsBuilder
+class InputsFormatter
 
 	def initialize(rows)
 		@rows = rows

@@ -1,4 +1,4 @@
-require './order.rb'
+require_relative 'order'
 require 'pry'
 
 class Store
