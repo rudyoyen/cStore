@@ -1,5 +1,5 @@
 require 'pry'
-require './config/config.rb'
+require_relative '../config.rb'
 
 class OutputFormatter
 

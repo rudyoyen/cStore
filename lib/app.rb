@@ -2,10 +2,10 @@
 require 'pry'
 
 
-require './config/config.rb'
-require './input_helpers/input_builder.rb'
-require './output_helpers/output_builder.rb'
-require './scenario.rb'
+require_relative 'config'
+require 'input_helpers/input_builder.rb'
+require 'output_helpers/output_builder.rb'
+require 'scenario'
 
 class App
 

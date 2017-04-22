@@ -12,5 +12,8 @@ class InputBuilder
 		inputs = InputsFormatter.new(file_contents).format_rows	
 	end
 
+	def cool
+		true
+	end
 
 end

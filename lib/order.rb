@@ -1,4 +1,4 @@
-require_relative './config/config.rb'
+require_relative './config.rb'
 
 class Order
 
@@ -11,7 +11,10 @@ class Order
 
 	def create
 		build_structure
-		set_quantity
+
+		if type_can_be_created?
+			set_quantity
+		end
 
 		if promo_exists?
 			apply_promo
@@ -32,6 +35,10 @@ class Order
 
 		def types
 			Config::ITEM_TYPES
+		end
+
+		def type_can_be_created?
+			@order[@type] != nil
 		end
 
 		def build_structure
