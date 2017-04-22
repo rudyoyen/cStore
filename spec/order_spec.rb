@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'config'
-require 'pry'
 
 describe 'Order' do
 
